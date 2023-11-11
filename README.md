@@ -1,7 +1,7 @@
 # D3D 팀플 테스트 프로젝트파일입니다.  
   
 ## 주요 변동사항  
-+ 코드표기법 : 클래스 멤버변수 : m_Variable / 함수 : Function(int param) / 구조체 멤버변수 : variable / 열거형 멤버변수 : ALL_CAP
++ 코드표기법 : 클래스 멤버변수 : m_variable / 함수 : Function(int param) / 구조체 멤버변수 : variable / 열거형 멤버변수 : ALL_CAP
 + framework.h 구성 및 순서변경
 + RenderUI() 함수 -> GUIRender()로 함수명 변경
 + GameObject2 -> GameObject 단일화
