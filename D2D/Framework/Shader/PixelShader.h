@@ -12,8 +12,5 @@ public:
     virtual void Set() override;
 
 private:
-    void  OutputError(ID3DBlob* outerror);
-
-private:
     ID3D11PixelShader* m_shader;    
 };

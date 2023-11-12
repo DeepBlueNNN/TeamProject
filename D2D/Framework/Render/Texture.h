@@ -5,14 +5,16 @@ public:
 	Texture(ID3D11ShaderResourceView* srv, ScratchImage& image, wstring file);
 	~Texture();
 
-public:
+public: // Setter
 	void PSSet(UINT slot = 0);
+
+public: // Getter
 	Vector2 GetSize()
 	{
-		return Vector2(image.GetMetadata().width, image.GetMetadata().height);
+		return Vector2(m_image.GetMetadata().width, m_image.GetMetadata().height);
 	}
-	wstring GetFile() {return file;}
-	ID3D11ShaderResourceView* GetSRV() { return srv; }
+	wstring GetFile() {return m_file;}
+	ID3D11ShaderResourceView* GetSRV() { return m_srv; }
 
 public:
 	static Texture* Add(wstring file);
@@ -22,9 +24,9 @@ public:
 	void   ReadPixels(vector<Float4>& pixels);  // terrain(heigh map)
 	
 private:
-	wstring  file;
-	ScratchImage image;
-	ID3D11ShaderResourceView* srv;
+	wstring	m_file = L"";
+	ScratchImage	m_image;
+	ID3D11ShaderResourceView* m_srv = nullptr;
 
-	static unordered_map<wstring, Texture*> textures;
+	static unordered_map<wstring, Texture*>	m_textures;
 };

@@ -2,19 +2,18 @@
 
 VertexShader::VertexShader(wstring file)
 {
+    m_file = file;
     DWORD flags = D3DCOMPILE_ENABLE_STRICTNESS | D3DCOMPILE_DEBUG;
-	ID3DBlob* OutError=nullptr;
+    ID3DBlob* outError = nullptr;
 	HRESULT hr;
 
-    m_file = file;
-
     hr = D3DCompileFromFile(file.c_str(),
-        nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE,  "VS", "vs_5_0", flags, 0, &m_blob, &OutError);
+        nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE,  "VS", "vs_5_0", flags, 0, &m_blob, &outError);
 
-	if (OutError)
+	if (outError)
 	{
-		string str = (char *)OutError->GetBufferPointer();
-		MessageBoxA(NULL, str.c_str(), "HLSL 에러", MB_OK);
+        string str = (char*)outError->GetBufferPointer();
+        MessageBoxA(NULL, str.c_str(), "VS : 쉐이더 파일 에러", MB_OK);
 	}
 	assert(SUCCEEDED(hr));
 
@@ -119,10 +118,4 @@ void VertexShader::CreateInputLayout()
     DEVICE->CreateInputLayout(inputLayouts.data(), inputLayouts.size(),
         m_blob->GetBufferPointer(), m_blob->GetBufferSize(),
         &m_inputLayout);
-}
-
-void VertexShader::OutputError(ID3DBlob* outerror)
-{
-    string str = (char*)outerror->GetBufferPointer();
-    MessageBoxA(NULL, str.c_str(), "Error", MB_OK);
 }

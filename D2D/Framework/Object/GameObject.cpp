@@ -15,6 +15,8 @@ GameObject::~GameObject()
 void GameObject::GUIRender()
 {
 	string label = m_tag + "_Object";
+	m_material->SetName(m_tag);
+
 	if (ImGui::TreeNode(label.c_str()))
 	{
 		Transform::GUIRender();

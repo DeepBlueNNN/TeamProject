@@ -60,3 +60,9 @@ void Shader::Delete()
     for (pair<wstring, Shader*> shader : m_shaders)
         delete shader.second;
 }
+
+void Shader::OutputError(ID3DBlob* outerror)
+{
+    string str = (char*)outerror->GetBufferPointer();
+    MessageBoxA(NULL, str.c_str(), "쉐이더파일 에러", MB_OK);
+}

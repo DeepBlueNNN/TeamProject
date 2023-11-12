@@ -210,33 +210,33 @@
     <ClInclude Include="Framework\State\DepthStencilState.h" />
     <ClInclude Include="Framework\State\RasterizerState.h" />
     <ClInclude Include="Framework\State\SamplerState.h" />
-    <ClInclude Include="Framework\Utilites\Audio.h">
+    <ClInclude Include="Framework\Utilities\Audio.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\BinaryReader.h">
+    <ClInclude Include="Framework\Utilities\BinaryReader.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\BinaryWriter.h">
+    <ClInclude Include="Framework\Utilities\BinaryWriter.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\FileDialog.h" />
-    <ClInclude Include="Framework\Utilites\Font.h">
+    <ClInclude Include="Framework\Utilities\FileDialog.h" />
+    <ClInclude Include="Framework\Utilities\Font.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\Keyboard.h" />
-    <ClInclude Include="Framework\Utilites\Observer.h">
+    <ClInclude Include="Framework\Utilities\Keyboard.h" />
+    <ClInclude Include="Framework\Utilities\Observer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\Singleton.h">
+    <ClInclude Include="Framework\Utilities\Singleton.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\Timer.h">
+    <ClInclude Include="Framework\Utilities\Timer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\tinyxml2.h">
+    <ClInclude Include="Framework\Utilities\tinyxml2.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\StringPath.h" />
+    <ClInclude Include="Framework\Utilities\StringPath.h" />
     <ClInclude Include="Program\MainWindow.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene\S00_TestScene.h" />
@@ -282,7 +282,6 @@
     <ClCompile Include="Framework\Object\Landscape\Sky.cpp" />
     <ClCompile Include="Framework\Object\UI\ProgressBar.cpp" />
     <ClCompile Include="Framework\Render\Material.cpp" />
-    <ClCompile Include="Framework\Render\Mesh.cpp" />
     <ClCompile Include="Framework\Render\Texture.cpp" />
     <ClCompile Include="Framework\Shader\ComputeShader.cpp" />
     <ClCompile Include="Framework\Shader\PixelShader.cpp" />
@@ -292,30 +291,30 @@
     <ClCompile Include="Framework\State\DepthStencilState.cpp" />
     <ClCompile Include="Framework\State\RasterizerState.cpp" />
     <ClCompile Include="Framework\State\SamplerState.cpp" />
-    <ClCompile Include="Framework\Utilites\Audio.cpp">
+    <ClCompile Include="Framework\Utilities\Audio.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\BinaryReader.cpp">
+    <ClCompile Include="Framework\Utilities\BinaryReader.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\BinaryWriter.cpp">
+    <ClCompile Include="Framework\Utilities\BinaryWriter.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\FileDialog.cpp" />
-    <ClCompile Include="Framework\Utilites\Font.cpp">
+    <ClCompile Include="Framework\Utilities\FileDialog.cpp" />
+    <ClCompile Include="Framework\Utilities\Font.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\Keyboard.cpp" />
-    <ClCompile Include="Framework\Utilites\Observer.cpp">
+    <ClCompile Include="Framework\Utilities\Keyboard.cpp" />
+    <ClCompile Include="Framework\Utilities\Observer.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\Timer.cpp">
+    <ClCompile Include="Framework\Utilities\Timer.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\tinyxml2.cpp">
+    <ClCompile Include="Framework\Utilities\tinyxml2.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\StringPath.cpp" />
+    <ClCompile Include="Framework\Utilities\StringPath.cpp" />
     <ClCompile Include="Program\MainWindow.cpp" />
     <ClCompile Include="Scene\S00_TestScene.cpp" />
     <ClCompile Include="Scene\S02_Grid.cpp" />

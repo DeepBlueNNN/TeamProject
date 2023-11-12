@@ -1,4 +1,7 @@
 #pragma once
+
+#include   "framework.h"
+
 template<typename T>
 class Mesh
 {
@@ -12,74 +15,73 @@ public:
 	void UpdateVertex();
 	void UpdateIndex();
 
-	vector<T>&    GetVertices() { return vertices; }
-	vector<UINT>& GetIndices()  { return indices; }
-	VertexBuffer* GetVertexBuffer() { return vertexBuffer; }
-	IndexBuffer*  GetIndexBuffer()  { return indexBuffer; }
+	vector<T>&    GetVertices() { return m_vertices; }
+	vector<UINT>& GetIndices()  { return m_indices; }
+	VertexBuffer* GetVertexBuffer() { return m_vertexBuffer; }
+	IndexBuffer*  GetIndexBuffer()  { return m_indexBuffer; }
 
 
 private:
-	VertexBuffer* vertexBuffer = nullptr;
-	IndexBuffer*  indexBuffer = nullptr;
-	vector<T> vertices;
-	vector<UINT> indices;
+	VertexBuffer*	m_vertexBuffer = nullptr;
+	IndexBuffer*	m_indexBuffer = nullptr;
+	vector<T>		m_vertices;
+	vector<UINT>	m_indices;
 };
 
 template<typename T>
 inline Mesh<T>::~Mesh()
 {
-	SAFE_DELETE(vertexBuffer);
-	SAFE_DELETE(indexBuffer);
+	SAFE_DELETE(m_vertexBuffer);
+	SAFE_DELETE(m_indexBuffer);
 }
 
 template<typename T>
 inline void Mesh<T>::Draw(D3D11_PRIMITIVE_TOPOLOGY type)
 {
-	vertexBuffer->Set(type);
-	if (indexBuffer)
+	m_vertexBuffer->Set(type);
+	if (m_indexBuffer)
 	{
-		indexBuffer->Set();
-		DC->DrawIndexed((UINT)indices.size(), 0, 0);
+		m_indexBuffer->Set();
+		DC->DrawIndexed((UINT)m_indices.size(), 0, 0);
 	}
 	else
 	{
-		DC->Draw((UINT)vertices.size(), 0);
+		DC->Draw((UINT)m_vertices.size(), 0);
 	}
 }
 
 template<typename T>
 inline void Mesh<T>::CreateMesh()
 {
-	if (vertices.size() > 0)
+	if (m_vertices.size() > 0)
 	{
-		vertexBuffer = new VertexBuffer(vertices.data(),
-			sizeof(T), (UINT)vertices.size());
+		m_vertexBuffer = new VertexBuffer(m_vertices.data(),
+			sizeof(T), (UINT)m_vertices.size());
 	}
 
-	if (indices.size() > 0)
+	if (m_indices.size() > 0)
 	{
-		indexBuffer = new IndexBuffer(indices.data(),
-			   (UINT)indices.size());
+		m_indexBuffer = new IndexBuffer(m_indices.data(),
+			(UINT)m_indices.size());
 	}
-
 }
 
 template<typename T>
 inline void Mesh<T>::UpdateVertex(void* data, UINT count)
 {
-	vertexBuffer->Update(data, count);
+	m_vertexBuffer->Update(data, count);
 }
 
 template<typename T>
 inline void Mesh<T>::UpdateVertex()
 {
-	vertexBuffer->Update(vertices.data(), vertices.size());
-	vertexBuffer->Set();
+	m_vertexBuffer->Update(m_vertices.data(), m_vertices.size());
+	m_vertexBuffer->Set();
 }
 
 template<typename T>
 inline void Mesh<T>::UpdateIndex()
 {
-	indexBuffer->Update(indices.data(), indices.size());
-	indexBuffer->Set();
+	m_indexBuffer->Update(m_indices.data(), m_indices.size());
+	m_indexBuffer->Set();
 }

@@ -23,7 +23,7 @@ VertexBuffer::~VertexBuffer()
 	SAFE_RELEASE(m_buffer);
 }
 
-void VertexBuffer::Update(void * data, UINT count)
+void VertexBuffer::Update(void* data, UINT count)
 {
 	DC->UpdateSubresource(m_buffer, 0, nullptr, data, m_stride, count);
 }

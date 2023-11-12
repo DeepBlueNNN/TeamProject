@@ -2,7 +2,7 @@
 class  StucturedBuffer
 {
 public:
-	StucturedBuffer(void* inputdata, UINT inputstride, UINT inputcount, UINT ouputstride, UINT ouputcount);
+	StucturedBuffer(void* inputData, UINT inputStride, UINT inputCount, UINT ouputStride, UINT ouputCount);
 	~StucturedBuffer();
 
 public:

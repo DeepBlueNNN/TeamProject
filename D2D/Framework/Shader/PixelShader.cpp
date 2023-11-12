@@ -3,20 +3,21 @@
 PixelShader::PixelShader(wstring file)
 {
     m_file = file;
-    ID3DBlob* outerror = nullptr;
-
     DWORD flags = D3DCOMPILE_ENABLE_STRICTNESS | D3DCOMPILE_DEBUG;
+    ID3DBlob* outError = nullptr;
+    HRESULT hr;
 
-    D3DCompileFromFile(file.c_str(),
-        nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "PS", "ps_5_0", flags, 0, &m_blob, &outerror);
+    hr = D3DCompileFromFile(file.c_str(),
+        nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "PS", "ps_5_0", flags, 0, &m_blob, &outError);
 
-    if (outerror)
+    if (outError)
     {
-        OutputError(outerror);
-        assert(false);
+        string str = (char*)outError->GetBufferPointer();
+        MessageBoxA(NULL, str.c_str(), "PS : 쉐이더 파일 에러", MB_OK);
     }
+    assert(SUCCEEDED(hr));
 
-    DEVICE->CreatePixelShader(m_blob->GetBufferPointer(),
+    hr = DEVICE->CreatePixelShader(m_blob->GetBufferPointer(),
         m_blob->GetBufferSize(), nullptr, &m_shader);
 }
 
@@ -28,10 +29,4 @@ PixelShader::~PixelShader()
 void PixelShader::Set()
 {
     DC->PSSetShader(m_shader, nullptr, 0);
-}
-
-void PixelShader::OutputError(ID3DBlob* outerror)
-{
-    string str = (char*)outerror->GetBufferPointer();
-    MessageBoxA(NULL, str.c_str(), "Error", MB_OK);
 }

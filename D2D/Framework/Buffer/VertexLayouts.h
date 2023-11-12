@@ -10,8 +10,8 @@ struct Vertex
     }
 
     Vertex(float x, float y, float z)
+        :pos(x, y, z)
     {
-        pos = { x, y, z };
     }
 };
 
@@ -23,13 +23,12 @@ struct VertexColor
     VertexColor()
     {
         pos = { 0.0f, 0.0f, 0.0f };
-        color = { 1, 1, 1, 1 };
+        color = { 1.0f, 1.0f, 1.0f, 1.0f };
     }
 
     VertexColor(float x, float y, float z, float r, float g, float b)
+        :pos(x, y, z), color(r, g, b, 1.0f)
     {
-        pos = { x, y, z };
-        color = { r, g, b, 1 };
     }
 };
 
@@ -38,8 +37,10 @@ struct VertexUV
     Float3 pos = {};
     Float2 uv = {};
 
-    VertexUV() : pos(0, 0, 0), uv(0, 0)
+    VertexUV()
     {
+        pos = { 0.0f, 0.0f, 0.0f };
+        uv = { 0.0f, 0.0f };
     }
 
     VertexUV(float x, float y, float z, float u, float v)

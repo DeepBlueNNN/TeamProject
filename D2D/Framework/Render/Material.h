@@ -9,6 +9,13 @@ public:
 public:
 	void Set();
 	void GUIRender();
+
+public: // Getter
+	string& GetName() { return m_name; }
+	MaterialBuffer::Data& GetData() { return m_buffer->Get(); }
+
+public: // Setter
+	void SetName(string name) { m_name = name; }
 	void SetShader(wstring shaderFile);
 	void SetDiffuseMap(wstring textureFile);
 	void SetSpecularMap(wstring textureFile);
@@ -18,26 +25,17 @@ public:
 	void Save(string file);
 	void Load(string file);
 
-
-public:
-	string& GetName() { return name; }
-	MaterialBuffer::Data& GetData() { return buffer->Get(); }
 private:
-	void		ParsingShader(tinyxml2::XMLNode* Parent);
-	void		ParsingTexture(tinyxml2::XMLNode* Parent);
-	void		ParsingProperty(tinyxml2::XMLNode* Parent);
-	Float4      ParsingColor(tinyxml2::XMLNode* Parent);
-private:
-	string name;
+	string m_name = "";
 
-	VertexShader* vertexShader = nullptr;
-	PixelShader*  pixelShader  = nullptr;
-	Texture*      diffuseMap   = nullptr;
-	Texture*      specularMap  = nullptr;
-	Texture*      normalMap    = nullptr;
+	VertexShader* m_vertexShader = nullptr;
+	PixelShader*  m_pixelShader  = nullptr;
+	Texture*      m_diffuseMap   = nullptr;
+	Texture*      m_specularMap  = nullptr;
+	Texture*      m_normalMap    = nullptr;
 
 private:
-	MaterialBuffer* buffer = nullptr;
-	string          file;
+	MaterialBuffer* m_buffer = nullptr;
+	string          m_file = "";
 
 };

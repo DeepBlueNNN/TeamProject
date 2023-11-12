@@ -13,6 +13,9 @@ public:
 	void GUIRender()   override;
 
 private:
-	vector<Collider*> colliders;
-
+	Cube* m_cube = nullptr;
+	Sphere* m_sphere = nullptr;
+	Cylinder* m_cylinder = nullptr;
+	vector<Collider*> m_colliders;
+	ModelAnimator* m_modelAnimator;
 };

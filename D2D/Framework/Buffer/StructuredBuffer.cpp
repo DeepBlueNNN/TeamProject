@@ -1,13 +1,13 @@
 #include "framework.h"
 #include "StructuredBuffer.h"
 
-StucturedBuffer::StucturedBuffer(void* inputdata, UINT inputstride, UINT inputcount, UINT outputstride, UINT outputcount)
+StucturedBuffer::StucturedBuffer(void* inputData, UINT inputStride, UINT inputCount, UINT outputStride, UINT outputCount)
 {
-	m_inputData     = inputdata;
-	m_inputStride   = inputstride;
-	m_inputCount    = inputcount;
-	m_outputStride  = outputstride;
-	m_outputCount   = outputcount;
+	m_inputData     = inputData;
+	m_inputStride   = inputStride;
+	m_inputCount    = inputCount;
+	m_outputStride  = outputStride;
+	m_outputCount   = outputCount;
 
 	CreateInput();
 	CreateSRV();

@@ -1,29 +1,30 @@
 #include "framework.h"
 #include "Texture.h"
-#include "Framework/Utilites/StringPath.h"
+#include "Framework/Utilities/StringPath.h"
 
-unordered_map<wstring, Texture*> Texture::textures;
+unordered_map<wstring, Texture*> Texture::m_textures;
+
 Texture::Texture(ID3D11ShaderResourceView* srv, ScratchImage& image, wstring file)
 {
-	this->srv = srv;
-	this->image = move(image);
-	this->file = file;
+	m_srv = srv;
+	m_image = move(image);
+	m_file = file;
 }
 
 Texture::~Texture()
 {
-	SAFE_RELEASE(srv);
+	SAFE_RELEASE(m_srv);
 }
 
 void Texture::PSSet(UINT slot)
 {
-	DC->PSSetShaderResources(slot, 1, &srv);
+	DC->PSSetShaderResources(slot, 1, &m_srv);
 }
 
 Texture* Texture::Add(wstring file)
 {
-	if (textures.count(file) > 0)
-		return textures[file];
+	if (m_textures.count(file) > 0)
+		return m_textures[file];
 
 	ScratchImage image;
 	HRESULT result;
@@ -43,15 +44,15 @@ Texture* Texture::Add(wstring file)
 	CreateShaderResourceView(DEVICE, image.GetImages(), image.GetImageCount(),
 		image.GetMetadata(), &srv);
 
-	textures[file] = new Texture(srv, image, file);
+	m_textures[file] = new Texture(srv, image, file);
 
-	return textures[file];
+	return m_textures[file];
 }
 
 Texture* Texture::Add(wstring file, wstring key)
 {
-	if (textures.count(key) > 0)
-		return textures[key];
+	if (m_textures.count(key) > 0)
+		return m_textures[key];
 
 	ScratchImage image;
 	HRESULT result;
@@ -71,34 +72,34 @@ Texture* Texture::Add(wstring file, wstring key)
 	CreateShaderResourceView(DEVICE, image.GetImages(), image.GetImageCount(),
 		image.GetMetadata(), &srv);
 
-	textures[key] = new Texture(srv, image, file);
+	m_textures[key] = new Texture(srv, image, file);
 
-	return textures[key];
+	return m_textures[key];
 }
 
 
 Texture* Texture::Add(wstring key, ID3D11ShaderResourceView* srv)
 {
-	if (textures.count(key) > 0)
-		return textures[key];
+	if (m_textures.count(key) > 0)
+		return m_textures[key];
 
 	ScratchImage image;
 
-	textures[key] = new Texture(srv, image, key);
+	m_textures[key] = new Texture(srv, image, key);
 
-	return textures[key];
+	return m_textures[key];
 }
 
 void Texture::Delete()
 {
-	for (pair<wstring, Texture*> texture : textures)
+	for (pair<wstring, Texture*> texture : m_textures)
 		SAFE_DELETE(texture.second);
 }
 
 void Texture::ReadPixels(vector<Float4>& pixels)
 {
-	uint8_t* colors = image.GetPixels();   // 0~255
-	UINT size = image.GetPixelsSize();
+	uint8_t* colors = m_image.GetPixels();   // 0~255
+	UINT size = m_image.GetPixelsSize();
 
 	pixels.resize(size / 4);  // rgba
 	float scale = 1.0f / 255.0f;

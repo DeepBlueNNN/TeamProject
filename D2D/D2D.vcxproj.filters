@@ -109,28 +109,28 @@
     <ClInclude Include="Framework\Buffer\ConstBuffer.h">
       <Filter>Framework\Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\Audio.h">
+    <ClInclude Include="Framework\Utilities\Audio.h">
       <Filter>Framework\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\BinaryReader.h">
+    <ClInclude Include="Framework\Utilities\BinaryReader.h">
       <Filter>Framework\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\BinaryWriter.h">
+    <ClInclude Include="Framework\Utilities\BinaryWriter.h">
       <Filter>Framework\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\FileDialog.h">
+    <ClInclude Include="Framework\Utilities\FileDialog.h">
       <Filter>Framework\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\Keyboard.h">
+    <ClInclude Include="Framework\Utilities\Keyboard.h">
       <Filter>Framework\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\Singleton.h">
+    <ClInclude Include="Framework\Utilities\Singleton.h">
       <Filter>Framework\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\StringPath.h">
+    <ClInclude Include="Framework\Utilities\StringPath.h">
       <Filter>Framework\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\tinyxml2.h">
+    <ClInclude Include="Framework\Utilities\tinyxml2.h">
       <Filter>Framework\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Collision\Collider.h">
@@ -220,13 +220,13 @@
     <ClInclude Include="Framework\State\SamplerState.h">
       <Filter>Framework\State</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\Font.h">
+    <ClInclude Include="Framework\Utilities\Font.h">
       <Filter>Framework\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\Timer.h">
+    <ClInclude Include="Framework\Utilities\Timer.h">
       <Filter>Framework\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Utilites\Observer.h">
+    <ClInclude Include="Framework\Utilities\Observer.h">
       <Filter>Framework\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Scene\S01_CubeMap.h">
@@ -247,13 +247,13 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Framework\Utilites\Audio.cpp">
+    <ClCompile Include="Framework\Utilities\Audio.cpp">
       <Filter>Framework\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\BinaryReader.cpp">
+    <ClCompile Include="Framework\Utilities\BinaryReader.cpp">
       <Filter>Framework\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\BinaryWriter.cpp">
+    <ClCompile Include="Framework\Utilities\BinaryWriter.cpp">
       <Filter>Framework\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Framework\State\BlendState.cpp">
@@ -289,10 +289,10 @@
     <ClCompile Include="Framework\Environment\Environment.cpp">
       <Filter>Framework\Environment</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\FileDialog.cpp">
+    <ClCompile Include="Framework\Utilities\FileDialog.cpp">
       <Filter>Framework\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\Font.cpp">
+    <ClCompile Include="Framework\Utilities\Font.cpp">
       <Filter>Framework\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Math\GameMath.cpp">
@@ -304,13 +304,10 @@
     <ClCompile Include="Framework\Buffer\IndexBuffer.cpp">
       <Filter>Framework\Buffer</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\Keyboard.cpp">
+    <ClCompile Include="Framework\Utilities\Keyboard.cpp">
       <Filter>Framework\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Render\Material.cpp">
-      <Filter>Framework\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Render\Mesh.cpp">
       <Filter>Framework\Render</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Model\ModeClip.cpp">
@@ -331,7 +328,7 @@
     <ClCompile Include="Framework\Shader\PixelShader.cpp">
       <Filter>Framework\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\Observer.cpp">
+    <ClCompile Include="Framework\Utilities\Observer.cpp">
       <Filter>Framework\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Program\MainWindow.cpp">
@@ -370,7 +367,7 @@
     <ClCompile Include="Framework\Collision\SphereCollider.cpp">
       <Filter>Framework\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\StringPath.cpp">
+    <ClCompile Include="Framework\Utilities\StringPath.cpp">
       <Filter>Framework\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Render\Texture.cpp">
@@ -385,10 +382,10 @@
     <ClCompile Include="Framework\Environment\Transform.cpp">
       <Filter>Framework\Environment</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\Timer.cpp">
+    <ClCompile Include="Framework\Utilities\Timer.cpp">
       <Filter>Framework\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Utilites\tinyxml2.cpp">
+    <ClCompile Include="Framework\Utilities\tinyxml2.cpp">
       <Filter>Framework\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Buffer\VertexBuffer.cpp">

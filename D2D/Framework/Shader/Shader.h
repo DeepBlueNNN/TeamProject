@@ -12,9 +12,14 @@ public:
     static class ComputeShader*  AddCS(wstring file);
     static void Delete();
 
+public:
     virtual void Set() = 0;
+
 public:
     wstring  GetFile() { return m_file; }
+
+protected:
+    void  OutputError(ID3DBlob* outerror);
 
 protected:
     ID3DBlob* m_blob = nullptr;

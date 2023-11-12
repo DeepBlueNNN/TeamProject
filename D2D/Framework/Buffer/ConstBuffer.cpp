@@ -3,18 +3,16 @@
 
 ConstBuffer::ConstBuffer(void* data, UINT dataSize)
 {
-	m_data     = data;
+	m_data = data;
 	m_dataSize = dataSize;
 
-	{
-		D3D11_BUFFER_DESC bufferDesc = {};
-		bufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-		bufferDesc.ByteWidth = dataSize;
-		bufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-		bufferDesc.CPUAccessFlags = D3D10_CPU_ACCESS_WRITE;
+	D3D11_BUFFER_DESC bufferDesc = {};
+	bufferDesc.Usage = D3D11_USAGE_DYNAMIC;
+	bufferDesc.ByteWidth = dataSize;
+	bufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+	bufferDesc.CPUAccessFlags = D3D10_CPU_ACCESS_WRITE;
 
-		DEVICE->CreateBuffer(&bufferDesc, nullptr, &m_buffer);
-	}
+	DEVICE->CreateBuffer(&bufferDesc, nullptr, &m_buffer);
 }
 
 ConstBuffer::~ConstBuffer()

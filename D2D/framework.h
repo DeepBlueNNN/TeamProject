@@ -131,14 +131,14 @@ typedef XMFLOAT4X4	Float4x4;
 #include "Framework/Shader/ComputeShader.h"
 
 // Utilities
-#include "Framework/Utilites/FileDialog.h"
-#include "Framework/Utilites/Singleton.h"
-#include "Framework/Utilites/Font.h"
-#include "Framework/Utilites/StringPath.h"
-#include "Framework/Utilites/BinaryReader.h"
-#include "Framework/Utilites/BinaryWriter.h"
-#include "Framework/Utilites/tinyxml2.h"
-#include "Framework/Utilites/Keyboard.h"
+#include "Framework/Utilities/FileDialog.h"
+#include "Framework/Utilities/Singleton.h"
+#include "Framework/Utilities/Font.h"
+#include "Framework/Utilities/StringPath.h"
+#include "Framework/Utilities/BinaryReader.h"
+#include "Framework/Utilities/BinaryWriter.h"
+#include "Framework/Utilities/tinyxml2.h"
+#include "Framework/Utilities/Keyboard.h"
 
 // Math
 #include "Framework/Math/Vector2.h"
@@ -173,10 +173,11 @@ typedef XMFLOAT4X4	Float4x4;
 #include "Framework/Model/ModelAnimator.h"
 
 // Objects
-#include  "Framework/Object/GameObject.h"
-#include  "Framework/Object/Basic/Sphere.h"
-#include  "Framework/Object/Basic/Cylinder.h"
-#include  "Framework/Object/Landscape/Sky.h"
+#include "Framework/Object/GameObject.h"
+#include "Framework/Object/Basic/Cube.h"
+#include "Framework/Object/Basic/Sphere.h"
+#include "Framework/Object/Basic/Cylinder.h"
+#include "Framework/Object/Landscape/Sky.h"
 
 // Colliders
 #include "Framework/Collision/Collider.h"
