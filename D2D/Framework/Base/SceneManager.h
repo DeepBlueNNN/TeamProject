@@ -26,7 +26,7 @@ public:	//Getter
 public:
 	void ChangeScene(string name);
 	void AddScene(Scene* scene)	{ m_scenes.push_back(scene); }
-	bool IsThredEnd()				{ return m_threadEnd; }
+	bool IsThredEnd()				{ return m_isThreadEnd; }
 
 private:
 	void ThreadStart();  // 여러개의 Scene이 있는 경우 여기서 생성
@@ -35,7 +35,7 @@ private:
 	string					m_strSceneName = "";
 	vector<class Scene*>	m_scenes;		// 여러개의 Scene을 담아 넣는 vector 컨테이너
 	Scene*					m_currentScene = nullptr;
-	bool					m_threadEnd = false;
+	bool					m_isThreadEnd = false;
 };
 
 //////////////////////////////////////////////////////////////

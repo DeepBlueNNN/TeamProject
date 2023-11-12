@@ -14,11 +14,9 @@ PixelInput VS(Vertex input)
     ouput.pos = mul(ouput.pos, projection);
 
     return ouput;
- 
 }
 
 float4 PS(PixelInput input) : SV_Target
 {
     return mDiffuse;
-
 }

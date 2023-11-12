@@ -11,6 +11,7 @@ cbuffer ProjectionBuffer : register(b2)
 {
     matrix projection;
 }
+
 //Vertex Layout
 struct VertexUV
 {
@@ -28,7 +29,6 @@ struct PixelInput
     float4 pos : SV_POSITION;
     float4 color : COLOR;
 };
-
 
 // shader program
 

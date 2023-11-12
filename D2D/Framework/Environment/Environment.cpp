@@ -6,57 +6,57 @@ Environment::Environment()
     CreateProjection();
     CreateState();
 
-    mainCamera  = new Camera();
-    lightBuffer = new LightBuffer();
-    viewBuffer  = new ViewBuffer();    
+    m_mainCamera  = new Camera();
+    m_lightBuffer = new LightBuffer();
+    m_viewBuffer  = new ViewBuffer();    
 }
 
 Environment::~Environment()
 {
-    SAFE_DELETE(projectionBuffer);  
-    SAFE_DELETE(lightBuffer);
-    SAFE_DELETE(viewBuffer);
+    SAFE_DELETE(m_projectionBuffer);  
+    SAFE_DELETE(m_lightBuffer);
+    SAFE_DELETE(m_viewBuffer);
 
-    SAFE_DELETE(mainCamera);
+    SAFE_DELETE(m_mainCamera);
 
-    SAFE_DELETE(samplerState);
-    SAFE_DELETE(rasterizerState[0]);
-    SAFE_DELETE(rasterizerState[1]);
-    SAFE_DELETE(blendState[0]);
-    SAFE_DELETE(blendState[1]);
+    SAFE_DELETE(m_samplerState);
+    SAFE_DELETE(m_rasterizerState[0]);
+    SAFE_DELETE(m_rasterizerState[1]);
+    SAFE_DELETE(m_blendState[0]);
+    SAFE_DELETE(m_blendState[1]);
 }
 
 void Environment::Update()
 {
     if (KEY_DOWN(VK_F1))
-        isWireMode = !isWireMode;
+        m_isWireMode = !m_isWireMode;
 
     if (KEY_DOWN(VK_F2))
         Collider::RenderOnOff();
 
-    mainCamera->Update();
+    m_mainCamera->Update();
 }
 
 void Environment::GUIRender()
 {
     if (ImGui::TreeNode("Environment"))
     {
-        mainCamera->GUIRender();
+        m_mainCamera->GUIRender();
         ImGui::Text("LightOption");
-        for (UINT i = 0; i < lightBuffer->Get().lightCount; i++)
+        for (UINT i = 0; i < m_lightBuffer->Get().lightCount; i++)
         {
             string name = "Light_" + to_string(i);
             if (ImGui::TreeNode(name.c_str()))
             {
-                ImGui::ColorEdit3("LightColor", (float*)&lightBuffer->Get().lights[i].color, ImGuiColorEditFlags_PickerHueWheel);
-                ImGui::SliderFloat3("LightDir", (float*)&lightBuffer->Get().lights[i].direction, -1, 1);
+                ImGui::ColorEdit3("LightColor", (float*)&m_lightBuffer->Get().lights[i].color, ImGuiColorEditFlags_PickerHueWheel);
+                ImGui::SliderFloat3("LightDir", (float*)&m_lightBuffer->Get().lights[i].direction, -1, 1);
 
                 ImGui::TreePop();
             }
         }
         
-        ImGui::ColorEdit3("AmbientLight", (float*)&lightBuffer->Get().ambientLight, ImGuiColorEditFlags_PickerHueWheel);
-        ImGui::ColorEdit3("AmbientCeil", (float*)&lightBuffer->Get().ambientCeil, ImGuiColorEditFlags_PickerHueWheel);
+        ImGui::ColorEdit3("AmbientLight", (float*)&m_lightBuffer->Get().ambientLight, ImGuiColorEditFlags_PickerHueWheel);
+        ImGui::ColorEdit3("AmbientCeil", (float*)&m_lightBuffer->Get().ambientCeil, ImGuiColorEditFlags_PickerHueWheel);
         ImGui::TreePop();
     }    
 }
@@ -66,75 +66,75 @@ void Environment::Set()
     SetViewport();
     SetPerspective();
 
-    if (isWireMode)
-        rasterizerState[1]->SetState();
+    if (m_isWireMode)
+        m_rasterizerState[1]->SetState();
     else
-        rasterizerState[0]->SetState();
+        m_rasterizerState[0]->SetState();
 
-    blendState[0]->SetState();
-    depthStencilState[0]->SetState();
+    m_blendState[0]->SetState();
+    m_depthStencilState[0]->SetState();
 
-    lightBuffer->SetPS(0);
+    m_lightBuffer->SetPS(0);
 }
 
 void Environment::PostSet()
 {
-    viewBuffer->SetVS(1);
+    m_viewBuffer->SetVS(1);
     SetOrthographic();
 
-    blendState[1]->SetState();
-    depthStencilState[1]->SetState();
+    m_blendState[1]->SetState();
+    m_depthStencilState[1]->SetState();
 }
 
 void Environment::SetViewport(UINT width, UINT height)
 {
-    viewport.Width = width;
-    viewport.Height = height;
-    viewport.MinDepth = 0.0f;
-    viewport.MaxDepth = 1.0f;
-    viewport.TopLeftX = 0.0f;
-    viewport.TopLeftY = 0.0f;
+    m_viewport.Width = width;
+    m_viewport.Height = height;
+    m_viewport.MinDepth = 0.0f;
+    m_viewport.MaxDepth = 1.0f;
+    m_viewport.TopLeftX = 0.0f;
+    m_viewport.TopLeftY = 0.0f;
 
-    DC->RSSetViewports(1, &viewport);
+    DC->RSSetViewports(1, &m_viewport);
 }
 
 void Environment::SetPerspective()
 {
-    projectionBuffer->Set(perspective);
-    projectionBuffer->SetVS(2);
+    m_projectionBuffer->Set(m_perspective);
+    m_projectionBuffer->SetVS(2);
 }
 
 void Environment::SetOrthographic()
 {
-    projectionBuffer->Set(orthographic);
-    projectionBuffer->SetVS(2);
+    m_projectionBuffer->Set(m_orthographic);
+    m_projectionBuffer->SetVS(2);
 }
 
 void Environment::CreateProjection()
 {
-    orthographic = XMMatrixOrthographicOffCenterLH(
+    m_orthographic = XMMatrixOrthographicOffCenterLH(
         0.0f, MAIN->GetWidth(), 0.0f, MAIN->GetHeight(), -1.0f, 1.0f);
     
-    perspective = XMMatrixPerspectiveFovLH(XM_PIDIV4,
+    m_perspective = XMMatrixPerspectiveFovLH(XM_PIDIV4,
         (float)MAIN->GetWidth() / (float)MAIN->GetHeight(), 0.1f, 1000.0f);
 
-    projectionBuffer = new MatrixBuffer();    
+    m_projectionBuffer = new MatrixBuffer();    
 }
 
 void Environment::CreateState()
 {
-    samplerState = new SamplerState();
-    samplerState->SetState();
+    m_samplerState = new SamplerState();
+    m_samplerState->SetState();
 
-    rasterizerState[0] = new RasterizerState();
-    rasterizerState[1] = new RasterizerState();
-    rasterizerState[1]->FillMode(D3D11_FILL_WIREFRAME);
+    m_rasterizerState[0] = new RasterizerState();
+    m_rasterizerState[1] = new RasterizerState();
+    m_rasterizerState[1]->FillMode(D3D11_FILL_WIREFRAME);
 
-    blendState[0] = new BlendState();
-    blendState[1] = new BlendState();
-    blendState[1]->Alpha(true);
+    m_blendState[0] = new BlendState();
+    m_blendState[1] = new BlendState();
+    m_blendState[1]->Alpha(true);
 
-    depthStencilState[0] = new DepthStencilState();
-    depthStencilState[1] = new DepthStencilState();
-    depthStencilState[1]->DepthEnable(false);
+    m_depthStencilState[0] = new DepthStencilState();
+    m_depthStencilState[1] = new DepthStencilState();
+    m_depthStencilState[1]->DepthEnable(false);
 }

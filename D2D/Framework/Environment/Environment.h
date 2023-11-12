@@ -19,8 +19,8 @@ public:
     void GUIRender();
 
 public: // Getter
-    Camera* GetMainCamera() { return mainCamera; }
-    Matrix  GetProjection() { return perspective; }
+    Camera* GetMainCamera() { return m_mainCamera; }
+    Matrix  GetProjection() { return m_perspective; }
 
 public: // Setter
     void Set();
@@ -35,19 +35,19 @@ private:
     void CreateState();
 
 private:
-    MatrixBuffer*       projectionBuffer     = nullptr;       
-    LightBuffer*        lightBuffer          = nullptr;
-    ViewBuffer*         viewBuffer           = nullptr;
+    MatrixBuffer*       m_projectionBuffer     = nullptr;       
+    LightBuffer*        m_lightBuffer          = nullptr;
+    ViewBuffer*         m_viewBuffer           = nullptr;
     
-    SamplerState*       samplerState         = nullptr;
-    RasterizerState*    rasterizerState[2];
-    BlendState*         blendState[2];
-    DepthStencilState*  depthStencilState[2];
+    SamplerState*       m_samplerState         = nullptr;
+    RasterizerState*    m_rasterizerState[2];
+    BlendState*         m_blendState[2];
+    DepthStencilState*  m_depthStencilState[2];
 
-    D3D11_VIEWPORT      viewport;
+    D3D11_VIEWPORT      m_viewport;
 
-    Matrix  perspective;
-    Matrix  orthographic;
-    Camera* mainCamera = nullptr;
-    bool    isWireMode = false;
+    Matrix  m_perspective;
+    Matrix  m_orthographic;
+    Camera* m_mainCamera = nullptr;
+    bool    m_isWireMode = false;
 };

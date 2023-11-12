@@ -134,7 +134,7 @@ void SceneManager::ThreadStart()
 	long  start = GetTickCount64();
 	long  end = GetTickCount64();
 
-	m_threadEnd = true;
+	m_isThreadEnd = true;
 
 	printf("½º·¹µå End  : %d\n", end - start);
 }

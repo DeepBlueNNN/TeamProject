@@ -21,6 +21,4 @@ private:
     float  m_radius = 1.0f;
     UINT   m_stackCount = 8;
     UINT   m_sliceCount = 16;
-
-
 };

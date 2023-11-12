@@ -1,13 +1,11 @@
 #include "../VertexHeader.hlsli"
 #include "../PixelHeader.hlsli"
 
-
 struct PixelInput
 {
     float4 pos : SV_POSITION;
     float2 uv  : UV;
 };
-
 
 // shader program
 
